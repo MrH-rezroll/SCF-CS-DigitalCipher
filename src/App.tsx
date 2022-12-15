@@ -99,6 +99,11 @@ function Advanced() {
           <input type="number" id="shiftby" name="shiftby" min="1" max="24" defaultValue={7} onChange={changeShiftValue}></input>
           <label>Result:</label>
           <input type="text" readOnly={true} value="a -> h"></input>
+          <legend>Encoded Sharing:</legend>
+          <div>
+            <button>Copy Encoded Key</button>
+            <button>Paste Encoded Key</button>
+          </div>
         </form>
         <form>
           <div>
