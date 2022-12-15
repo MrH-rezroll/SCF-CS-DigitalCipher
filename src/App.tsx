@@ -35,10 +35,12 @@ function Layout() {
 
 function AppLanding() {
   return (
-    <div>
+    <div id="AppLanding">
       <h2>Select Mode</h2>
-      <Link to="Beginner">Beginner</Link>
-      <Link to="Advanced">Advanced</Link>
+      <div id="MainSelection">
+        <Link to="Beginner">Beginner</Link>
+        <Link to="Advanced">Advanced</Link>
+      </div>
     </div>
   );
 }

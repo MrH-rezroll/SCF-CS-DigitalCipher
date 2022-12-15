@@ -11,3 +11,56 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Tag Styles */
+h1{
+  border: 1px solid #3f3f3f;
+  width: 90%;
+  margin: 2% auto;
+  padding: 2%;
+}
+
+h1, h2{
+  text-align: center;
+}
+
+form{
+  background-color: #f1f1f1;
+}
+
+/* ID Styles */
+
+#AppWrapper2{
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: column;
+  justify-content: space-between;
+  background-color: #ccc;
+  width:50%;
+  margin: 0 auto;
+}
+
+#AppWrapper2 > div{
+  margin-bottom: 2%;
+}
+
+#MainSelection{
+  display: flex;
+  justify-content: center;
+}
+
+#AppLanding a{
+  padding: 1em;
+  border: 2px solid #1f1f1f;
+  border-radius: 10px;
+  width: 25%;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  margin: 2%;
+  color: #1f1f1f;
+}
+
+#AppLanding a:hover {
+  background-color: #eee;
+}
