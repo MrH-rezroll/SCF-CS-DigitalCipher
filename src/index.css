@@ -37,7 +37,7 @@ form{
   display: flex;
 }
 
-form:nth-of-type(2) {
+#Beginner form:nth-of-type(2) {
   display:flex;
   flex-flow: row;
 }
@@ -100,6 +100,8 @@ a:has(+ form):hover{
   background-color: #ccc;
   width:50%;
   margin: 2% auto;
+  border: 1px solid #3f3f3f;
+  border-radius: 10px;
 }
 
 #MainSelection{
@@ -131,4 +133,41 @@ a:has(+ form):hover{
   width: 80%;
   margin-top: 2%;
   margin-left: 0;
+}
+
+#EncryptionOperations {
+  display:flex;
+}
+
+#EncryptionOperations form:nth-child(1) {
+  width: 25%;
+  margin-right: 0;
+  display: inline;
+}
+#EncryptionOperations form:nth-child(1) {
+  width: 25%;
+}
+#EncryptionOperations form:nth-child(1) legend{
+  margin-bottom: 10px;
+}
+#EncryptionOperations form:nth-child(1) label{
+  display:inline-block;
+  width: 40%;
+}
+#EncryptionOperations form:nth-child(1) input{
+  margin-bottom: 2px;
+}
+
+#EncryptionOperations form:nth-child(2) {
+  width: 60%;
+  display: inline;
+}
+#EncryptionOperations form:nth-child(2) div{
+  width: 100%;
+}
+#EncryptionOperations form:nth-child(2) div:nth-child(2){
+  display: flex;
+  flex-flow: row;
+  margin-top: 0;
+  justify-content: center;
 }
