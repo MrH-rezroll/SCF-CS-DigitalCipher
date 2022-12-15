@@ -20,12 +20,74 @@ h1{
   padding: 2%;
 }
 
+h1:has(+ #Beginner), h1:has(+ #Advanced), h2:has(+ a){
+  display: none;
+}
+
 h1, h2{
   text-align: center;
 }
 
 form{
   background-color: #f1f1f1;
+  padding: 2%;
+  margin: 0 2% 2%;
+  border: 1px solid #3f3f3f;
+  border-radius: 10px;
+  display: flex;
+}
+
+form:nth-of-type(2) {
+  display:flex;
+  flex-flow: row;
+}
+
+form:nth-of-type(2) div:nth-child(2){
+  display:flex;
+  flex-flow: column;
+  width: 20%;
+  margin: 28px 10px 0 10px;
+}
+
+form:nth-of-type(2) div:nth-child(1){
+  display:flex;
+  flex-flow: column;
+  width: 80%;
+}
+
+form:nth-of-type(2) button{
+  display:flex;
+  flex-flow: column;
+  font-size: 90%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+textarea{
+  margin: 10px 0;
+  min-height: 8em;
+}
+
+label{
+  padding: 0 1% 0 3%;
+}
+
+select{
+  font-size: 100%;
+  margin-left: 2%;
+}
+
+a:has(+ form){
+  display:inline-block;
+  padding: 2%;
+  border: 1px solid #3f3f3f;
+  margin: 2%;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+a:has(+ form):hover{
+  background-color: #eee;
 }
 
 /* ID Styles */
@@ -37,11 +99,7 @@ form{
   justify-content: space-between;
   background-color: #ccc;
   width:50%;
-  margin: 0 auto;
-}
-
-#AppWrapper2 > div{
-  margin-bottom: 2%;
+  margin: 2% auto;
 }
 
 #MainSelection{
@@ -63,4 +121,14 @@ form{
 
 #AppLanding a:hover {
   background-color: #eee;
+}
+
+#Beginner div:nth-child(1), #Advanced div:nth-child(1){
+  display:flex;
+}
+
+#EncryptionSelection form {
+  width: 80%;
+  margin-top: 2%;
+  margin-left: 0;
 }
