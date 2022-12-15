@@ -1,27 +1,18 @@
 import * as React from "react";
+import { Helmet } from 'react-helmet';
 import { Routes, Route, Outlet, Link } from "react-router-dom";
 
 export default function App() {
   return (
-    <div>
-      <h1>Basic Example</h1>
-
-      <p>
-        This example demonstrates some of the core features of React Router
-        including nested <code>&lt;Route&gt;</code>s,{" "}
-        <code>&lt;Outlet&gt;</code>s, <code>&lt;Link&gt;</code>s, and using a
-        "*" route (aka "splat route") to render a "not found" page when someone
-        visits an unrecognized URL.
-      </p>
-
+    <div id="AppWrapper">
       {/* Routes nest inside one another. Nested route paths build upon
             parent route paths, and nested route elements render inside
             parent route elements. See the note about <Outlet> below. */}
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="dashboard" element={<Dashboard />} />
+          <Route index element={<AppLanding />} />
+          <Route path="beginner" element={<Beginner />} />
+          <Route path="advanced" element={<Advanced />} />
 
           {/* Using path="*"" means "match anything", so this route
                 acts like a catch-all for URLs that we don't have explicit
@@ -35,56 +26,56 @@ export default function App() {
 
 function Layout() {
   return (
-    <div>
-      {/* A "layout route" is a good place to put markup you want to
-          share across all the pages on your site, like navigation. */}
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
-          <li>
-            <Link to="/nothing-here">Nothing Here</Link>
-          </li>
-        </ul>
-      </nav>
-
-      <hr />
-
-      {/* An <Outlet> renders whatever child route is currently active,
-          so you can think about this <Outlet> as a placeholder for
-          the child routes we defined above. */}
+    <div id="AppWrapper2">
+      <h1 id="AppTitle">Digital Cipher Activity</h1>
       <Outlet />
     </div>
   );
 }
 
-function Home() {
+function AppLanding() {
   return (
     <div>
-      <h2>Home</h2>
+      <h2>Select Mode</h2>
+      <Link to="Beginner">Beginner</Link>
+      <Link to="Advanced">Advanced</Link>
     </div>
   );
 }
 
-function About() {
+function Beginner() {
   return (
     <div>
-      <h2>About</h2>
+      <h2>Beginner</h2>
+      <Link to="/">Back</Link>
+      <form>
+        <legend>Encryption Type:</legend>
+        <select>
+          <option value="caesar" selected>Caesar Cipher</option>
+        </select>
+      </form>
+      <form>
+        <legend>Encryption Options</legend>
+        <label htmlFor="shiftby">Shift by:</label>
+        <input type="number" id="shiftby" name="shiftby" min="1" max="24" value="7"></input>
+        <label>Result:</label>
+        <input type="text" readOnly={true} value="a -> h"></input>
+      </form>
+      <form>
+        <legend>Encryption Text</legend>
+        <textarea name="textToEncode"></textarea>
+        <button>Encode Text</button>
+        <button>Decode Text</button>
+      </form>
     </div>
   );
 }
 
-function Dashboard() {
+function Advanced() {
   return (
     <div>
-      <h2>Dashboard</h2>
+      <h2>Advanced</h2>
+      <Link to="/">Back</Link>
     </div>
   );
 }
