@@ -94,6 +94,42 @@ button:hover{
   cursor:pointer;
 }
 
+/* Class Styles */
+
+.ReactModal__Content{
+  width: 400px;
+  margin: 0 auto;
+}
+
+.help-button{    
+  visibility: hidden;
+  position: absolute;
+  top: 95px;
+  right: 0;
+  margin: 1%;
+  width: 18px;
+  height: 18px;
+}
+
+.help-button:hover{
+  background-color: #eee;
+  right: 0;
+  width: 18px;
+  height: 18px;
+}
+
+.help-button:after{
+  visibility: visible;
+  position: absolute;
+  right: 0;
+  content: "?";
+  border: 1px solid #3f3f3f;
+  border-radius: 25px;
+  margin: 1%;
+  width: 18px;
+  height: 18px;
+}
+
 /* ID Styles */
 
 #AppWrapper2{
@@ -150,6 +186,7 @@ button:hover{
 }
 #EncryptionOperations form:nth-child(1) {
   width: 25%;
+  position:relative;
 }
 #EncryptionOperations form:nth-child(1) legend{
   margin-bottom: 10px;

@@ -1,8 +1,16 @@
 import * as React from "react";
-import { Helmet } from 'react-helmet';
+import Modal from 'react-modal';
 import { Routes, Route, Outlet, Link } from "react-router-dom";
 
+interface ModalProps {
+  buttonText: string,
+  modalMessage: string
+  modalType: number,
+  modalCustomClassName: string
+}
+
 export default function App() {
+
   return (
     <div id="AppWrapper">
       {/* Routes nest inside one another. Nested route paths build upon
@@ -21,6 +29,41 @@ export default function App() {
         </Route>
       </Routes>
     </div>
+  );
+}
+
+function ModalWindow(props:ModalProps){
+  //let subtitle;
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    //subtitle.style.color = '#f00';
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+  return (
+    <>
+    <button className={props.modalCustomClassName} type="button" onClick={openModal}>{props.buttonText}</button>
+    <Modal
+      isOpen={modalIsOpen}
+      onAfterOpen={afterOpenModal}
+      onRequestClose={closeModal}
+      //style={customStyles}
+      contentLabel="Example Modal"
+    >
+      <button onClick={closeModal}>close</button>
+      <h3>{props.buttonText}</h3>
+      <div><p>{props.modalMessage}</p></div>
+      {props.modalType != 0 ? <CopyPasteKeyForm buttonText={props.buttonText} modalMessage={props.modalMessage} modalType={props.modalType} modalCustomClassName={props.modalCustomClassName} /> : ''}
+    </Modal>
+    </>
   );
 }
 
@@ -79,6 +122,17 @@ function Beginner() {
   );
 }
 
+function CopyPasteKeyForm(props:ModalProps){
+  return (
+    <>
+    <form>
+      <input name="{props.modalType}" type="text"></input>
+      <button>{props.modalMessage}</button>
+    </form>
+    </>
+  )
+}
+
 function Advanced() {
   return (
     <div id="Advanced">
@@ -100,9 +154,10 @@ function Advanced() {
           <label>Result:</label>
           <input type="text" readOnly={true} value="a -> h"></input>
           <legend>Encoded Sharing:</legend>
+          <ModalWindow buttonText={"About Encoded Sharing"} modalMessage={"For further security, you can encode your shift key with a more complex algorithm called base64. This way you are not sharing the actual shift value. Use copy to create the encoded key for your message, and use paste to set a key from an encoded message."} modalType={0} modalCustomClassName={"help-button"} />
           <div>
-            <button>Copy Encoded Key</button>
-            <button>Paste Encoded Key</button>
+            <ModalWindow buttonText={"Copy Encoded Key"} modalMessage={"Copy Encoded Key to Clipboard"} modalType={1} modalCustomClassName={""} />
+            <ModalWindow buttonText={"Paste Encoded Key"} modalMessage={"Paste Encoded Key from Clipboard"} modalType={2} modalCustomClassName={""} />
           </div>
         </form>
         <form>
