@@ -1,3 +1,9 @@
+/**
+ * Digital Cipher Activity - provide the UI for the pop-up window offering users more options. Typically only found in the Acvanced activity
+ * @version 12.19.22
+ * @author MrH-rezroll
+ */
+
 import Modal from 'react-modal';
 import React from 'react';
 import { ModalProps } from '../control/ModalWindowControl';

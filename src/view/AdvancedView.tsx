@@ -1,3 +1,9 @@
+/**
+ * Digital Cipher Activity - Advanced View containing more/deeper options for users
+ * @version 12.19.22
+ * @author MrH-rezroll
+ */
+
 import { Link } from "react-router-dom";
 import ModalWindowControl from "../control/ModalWindowControl";
 

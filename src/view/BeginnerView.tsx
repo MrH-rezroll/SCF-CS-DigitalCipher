@@ -1,3 +1,9 @@
+/**
+ * Digital Cipher Activity - The acivity view with only essential options for using ciphers
+ * @version 12.19.22
+ * @author MrH-rezroll
+ */
+
 import { Link } from "react-router-dom";
 
 export default function BeginnerView() {

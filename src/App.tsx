@@ -1,3 +1,9 @@
+/**
+ * Digital Cipher Activity - Entrypoint to the activity app
+ * @version 12.19.22
+ * @author MrH-rezroll
+ */
+
 import { Routes, Route} from "react-router-dom";
 import LayoutView from "./view/LayoutView"; 
 import AdvancedView from "./view/AdvancedView";
