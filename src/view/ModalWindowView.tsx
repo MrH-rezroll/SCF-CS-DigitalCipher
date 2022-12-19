@@ -1,13 +1,6 @@
 import Modal from 'react-modal';
 import React from 'react';
-
-
-interface ModalProps {
-    buttonText: string,
-    modalMessage: string
-    modalType: number,
-    modalCustomClassName: string
-  }
+import { ModalProps } from '../control/ModalWindowControl';
 
 export default function ModalWindowView(props:ModalProps){
     //let subtitle;
@@ -25,7 +18,7 @@ export default function ModalWindowView(props:ModalProps){
     function closeModal() {
       setIsOpen(false);
     }
-    
+
     return (
       <>
       <button className={props.modalCustomClassName} type="button" onClick={openModal}>{props.buttonText}</button>

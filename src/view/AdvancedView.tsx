@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import ModalWindowView from "./ModalWindowView";
+import ModalWindowControl from "../control/ModalWindowControl";
 
 export default function AdvancedView() {
   return (
@@ -22,10 +22,10 @@ export default function AdvancedView() {
           <label>Result:</label>
           <input type="text" readOnly={true} value="a -> h"></input>
           <legend>Encoded Sharing:</legend>
-          <ModalWindowView buttonText={"About Encoded Sharing"} modalMessage={"For further security, you can encode your shift key with a more complex algorithm called base64. This way you are not sharing the actual shift value. Use copy to create the encoded key for your message, and use paste to set a key from an encoded message."} modalType={0} modalCustomClassName={"help-button"} />
+          <ModalWindowControl buttonText={"About Encoded Sharing"} modalMessage={"For further security, you can encode your shift key with a more complex algorithm called base64. This way you are not sharing the actual shift value. Use copy to create the encoded key for your message, and use paste to set a key from an encoded message."} modalType={0} modalCustomClassName={"help-button"} />
           <div>
-            <ModalWindowView buttonText={"Copy Encoded Key"} modalMessage={"Copy Encoded Key to Clipboard"} modalType={1} modalCustomClassName={""} />
-            <ModalWindowView buttonText={"Paste Encoded Key"} modalMessage={"Paste Encoded Key from Clipboard"} modalType={2} modalCustomClassName={""} />
+            <ModalWindowControl buttonText={"Copy Encoded Key"} modalMessage={"Copy Encoded Key to Clipboard"} modalType={1} modalCustomClassName={""} />
+            <ModalWindowControl buttonText={"Paste Encoded Key"} modalMessage={"Paste Encoded Key from Clipboard"} modalType={2} modalCustomClassName={""} />
           </div>
         </form>
         <form>
