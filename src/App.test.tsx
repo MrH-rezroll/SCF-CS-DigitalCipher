@@ -14,6 +14,12 @@ test('Caesar Cipher get key is 7', () => {
   expect(theCaesarCipher.getTheCipherKey()).toBe(7);
 });
 
+test('Caesar Cipher encodes long message', () => {
+  const theCaesarCipher = new CaesarCipherModel("Let's encode some text with a Caesar Cipher!", 7);
+  theCaesarCipher.setTheEncodedMessage("Let's encode some text with a Caesar Cipher!");
+  expect(theCaesarCipher.getTheMessage()).toBe("Sla'z lujvkl zvtl alea dpao h Jhlzhy Jpwoly!");
+});
+
 test('Caesar Cipher set message to "hi" after "hello"', () => {
   const theCaesarCipher = new CaesarCipherModel("hello", 7);
   expect(theCaesarCipher.getTheMessage()).toBe("hello");

@@ -10,6 +10,7 @@ import BeginnerView from "../view/BeginnerView";
 
 let theCipherModel:BaseCipherModel;
 let cipherPreviewInput = document.getElementById('EncodeDisplayPreview') as HTMLInputElement | null;
+let cipherText = document.getElementById('CipherText') as HTMLInputElement | null;
 
 export default class BeginnerControl{
     theBeginnerView:BeginnerView;
@@ -32,6 +33,39 @@ export default class BeginnerControl{
 
     getTheCipherDisplayPreview ():string {
         return theCipherModel.getTheCipherDisplayPreview();
+    }
+
+    encodeTheCipherText(event: any){
+        event.preventDefault();
+        if(theCipherModel.isTheMessageEncoded()){
+            return;
+        }
+        if(cipherText == null){
+            cipherText = document.getElementById('CipherText') as HTMLInputElement | null;
+        }
+        if(cipherText != null){
+            console.log(cipherText.value);
+            theCipherModel.setTheEncodedMessage(cipherText.value);
+            cipherText.value = theCipherModel.getTheMessage();
+            theCipherModel.setTheMessageIsEncoded(true);
+        }
+        
+    }
+
+    decodeTheCipherText(event: any){
+        event.preventDefault();
+        if(!theCipherModel.isTheMessageEncoded()){
+            return;
+        }
+        if(cipherText == null){
+            cipherText = document.getElementById('CipherText') as HTMLInputElement | null;
+        }
+        if(cipherText != null){
+            theCipherModel.setTheDecodedMessage(cipherText.value);
+            cipherText.value = theCipherModel.getTheMessage();
+            theCipherModel.setTheMessageIsEncoded(false);
+        }
+        
     }
     
     changeKeyValue(event: { target: {name: any, value: any; }; }) {

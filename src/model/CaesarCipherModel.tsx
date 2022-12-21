@@ -6,18 +6,24 @@
 
 import BaseCipherModel from "./BaseCipherModel";
 
+const alphabet:String[] = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+let theTextToCode:string;
 export default class CaesarCipherModel extends BaseCipherModel{
     constructor(message:string, cipherKey:number){
         super(message, cipherKey);
         this.setTheCipherDisplayPreview();
     }
 
+    async setTheEncodedMessage(message:string){
+        await this.setTheMessage(this.encodeTheMessage(message));
+    }
+
     getTheEncodedMessage ():string {
         return this.encodeTheMessage();
     }
     
-    setTheDecodedMessage (message:string) {
-        this.setTheMessage(this.decodeTheMessage(message));
+    async setTheDecodedMessage (message:string) {
+        await this.setTheMessage(this.decodeTheMessage(message));
     }
 
     setTheCipherDisplayPreview () {
@@ -27,21 +33,22 @@ export default class CaesarCipherModel extends BaseCipherModel{
     }
 
     private decodeTheMessage(textToDecode: string):string{
+        theTextToCode = textToDecode;
         let theDecodedMessage:string = '';
-        for (let i:number = 0; i < textToDecode.length; i++) {
+        for (let i:number = 0; i < theTextToCode.length; i++) {
             let alphabetWrappedKey: number = this.getTheCipherKey();
-            let characterToAdd:string = String(textToDecode.charAt(i));
-            for(let j:number = 0; j < this.alphabet.length; j++){
-                if(this.alphabet[j].toLocaleLowerCase() == String(textToDecode.charAt(i)).toLocaleLowerCase()){
+            let characterToAdd:string = String(theTextToCode.charAt(i));
+            for(let j:number = 0; j < alphabet.length; j++){
+                if(alphabet[j].toLocaleLowerCase() == String(theTextToCode.charAt(i)).toLocaleLowerCase()){
                     alphabetWrappedKey = j - this.getTheCipherKey();
                     if(alphabetWrappedKey < 0){
-                        alphabetWrappedKey = this.alphabet.length - Math.abs(alphabetWrappedKey);
+                        alphabetWrappedKey = alphabet.length - Math.abs(alphabetWrappedKey);
                     }
-                    if(textToDecode.charAt(i) == textToDecode.charAt(i).toUpperCase()){
-                        characterToAdd = this.alphabet[alphabetWrappedKey].toUpperCase();
+                    if(theTextToCode.charAt(i) == theTextToCode.charAt(i).toUpperCase()){
+                        characterToAdd = alphabet[alphabetWrappedKey].toUpperCase();
                     }
                     else{
-                        characterToAdd = this.alphabet[alphabetWrappedKey].toLowerCase();
+                        characterToAdd = alphabet[alphabetWrappedKey].toLowerCase();
                     }
                     break;
                 }
@@ -52,21 +59,27 @@ export default class CaesarCipherModel extends BaseCipherModel{
     }
 
     private encodeTheMessage (textToEncode: string = this.getTheMessage()):string{
+        theTextToCode = textToEncode;
         let theEncodedMessage:string = '';
-        for (let i:number = 0; i < textToEncode.length; i++) {
+        for (let i:number = 0; i < theTextToCode.length; i++) {
             let alphabetWrappedKey: number = this.getTheCipherKey();
-            let characterToAdd:string = String(textToEncode.charAt(i));
-            for(let j:number = 0; j < this.alphabet.length; j++){
-                if(this.alphabet[j].toLocaleLowerCase() == String(textToEncode.charAt(i)).toLocaleLowerCase()){
+            let characterToAdd:string = String(theTextToCode.charAt(i));
+            for(let j:number = 0; j < alphabet.length; j++){
+                if(alphabet[j].toLocaleLowerCase() == String(theTextToCode.charAt(i)).toLocaleLowerCase()){
                     alphabetWrappedKey += j;
-                    if(alphabetWrappedKey > this.alphabet.length){
-                        alphabetWrappedKey = this.getTheCipherKey() - (this.alphabet.length - j);
+                    if(alphabetWrappedKey > alphabet.length-1){
+                        alphabetWrappedKey = this.getTheCipherKey() - (alphabet.length - j);
                     }
-                    if(textToEncode.charAt(i) == textToEncode.charAt(i).toUpperCase()){
-                        characterToAdd = this.alphabet[alphabetWrappedKey].toUpperCase();
+                    if(theTextToCode.charAt(i) == theTextToCode.charAt(i).toUpperCase()){
+                        characterToAdd = alphabet[alphabetWrappedKey].toUpperCase();
                     }
                     else{
-                        characterToAdd = this.alphabet[alphabetWrappedKey].toLowerCase();
+                        if(alphabet[alphabetWrappedKey] != undefined){
+                            characterToAdd = alphabet[alphabetWrappedKey].toLocaleLowerCase();
+                        }
+                        else{
+                            characterToAdd = String(alphabet[alphabetWrappedKey]);
+                        }
                     }
                     break;
                 }

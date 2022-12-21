@@ -37,11 +37,11 @@ export default class BeginnerView {
         <form>
           <div>
             <legend>Encryption Text:</legend>
-            <textarea name="textToEncode" defaultValue={this.theBeginnerControl.getTheCipherMessage()}></textarea>
+            <textarea id="CipherText" name="textToEncode" defaultValue={this.theBeginnerControl.getTheCipherMessage()}></textarea>
           </div>
           <div>
-            <button>Encode Text</button>
-            <button>Decode Text</button>
+            <button onClick={this.theBeginnerControl.encodeTheCipherText}>Encode Text</button>
+            <button onClick={this.theBeginnerControl.decodeTheCipherText}>Decode Text</button>
           </div>
         </form>
       </div>
