@@ -40,12 +40,12 @@ test('Caesar Cipher get encoded message "Hello World" with shift of 7 as "Olssv 
 
 test('Caesar Cipher get encode display preview should be "a -> h"', () => {
   const theCaesarCipher = new CaesarCipherModel("Hello World", 7);
-  expect(theCaesarCipher.getEncodeDisplayPreview()).toBe("a -> h");
+  expect(theCaesarCipher.getTheCipherDisplayPreview()).toBe("a -> h");
 });
 
 test('Caesar Cipher get encode display preview should be "a -> j"', () => {
   const theCaesarCipher = new CaesarCipherModel("Hello World", 9);
-  expect(theCaesarCipher.getEncodeDisplayPreview()).toBe("a -> j");
+  expect(theCaesarCipher.getTheCipherDisplayPreview()).toBe("a -> j");
 });
 
 test('Caesar Cipher set cipher key from base64 encoded cipher key', () => {
@@ -63,6 +63,7 @@ test('Caesar Cipher full user process test: Encode a messge, recieve and decode 
   const theCaesarCipher = new CaesarCipherModel("Hello World!", 7);
   expect(theCaesarCipher.getTheEncodedMessage()).toBe("Olssv Dvysk!");
   theCaesarCipher.setBase64EncodedKey("OA==");
+  expect(theCaesarCipher.getTheCipherKey()).toBe(8);
   theCaesarCipher.setTheDecodedMessage("Pmttw Camz 42.");
   expect(theCaesarCipher.getTheMessage()).toBe("Hello User 42.");
 });

@@ -5,8 +5,16 @@
  */
 
 import { Link } from "react-router-dom";
+import BeginnerControl from "../control/BeginnerControl";
 
-export default function BeginnerView() {
+export default class BeginnerView {
+  theBeginnerControl:BeginnerControl;
+
+  constructor(beginnerControl:BeginnerControl){
+    this.theBeginnerControl = beginnerControl;
+  }
+
+  getTheBeginnerView(){
     return (
       <div id="Beginner">
       <div id="EncryptionSelection">
@@ -22,14 +30,14 @@ export default function BeginnerView() {
         <form>
           <legend>Encryption Options:</legend>
           <label htmlFor="shiftby">Shift by:</label>
-          <input type="number" id="shiftby" name="shiftby" min="1" max="24" defaultValue={7} onChange={changeShiftValue}></input>
+          <input type="number" id="shiftby" name="shiftby" min="1" max="24" defaultValue={this.theBeginnerControl.getTheCipherKey()} onChange={this.theBeginnerControl.changeKeyValue}></input>
           <label>Result:</label>
-          <input type="text" readOnly={true} value="a -> h"></input>
+          <input type="text" id="EncodeDisplayPreview" name="encodedDisplayPreview" readOnly={false} onChange={this.theBeginnerControl.changeKeyValue} defaultValue={this.theBeginnerControl.getTheCipherDisplayPreview()}></input>
         </form>
         <form>
           <div>
             <legend>Encryption Text:</legend>
-            <textarea name="textToEncode"></textarea>
+            <textarea name="textToEncode" defaultValue={this.theBeginnerControl.getTheCipherMessage()}></textarea>
           </div>
           <div>
             <button>Encode Text</button>
@@ -39,7 +47,4 @@ export default function BeginnerView() {
       </div>
     );
   }
-
-function changeShiftValue(event: { target: { value: any; }; }) {
-    console.log(event.target.value);
-  }
+}

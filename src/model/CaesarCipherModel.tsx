@@ -9,6 +9,7 @@ import BaseCipherModel from "./BaseCipherModel";
 export default class CaesarCipherModel extends BaseCipherModel{
     constructor(message:string, cipherKey:number){
         super(message, cipherKey);
+        this.setTheCipherDisplayPreview();
     }
 
     getTheEncodedMessage ():string {
@@ -19,10 +20,10 @@ export default class CaesarCipherModel extends BaseCipherModel{
         this.setTheMessage(this.decodeTheMessage(message));
     }
 
-    getEncodeDisplayPreview ():string {
+    setTheCipherDisplayPreview () {
         let displayPreview:string = "a -> ";
         displayPreview += this.encodeTheMessage("a");
-        return displayPreview;
+        this.theCipherDisplayPreview = displayPreview;
     }
 
     private decodeTheMessage(textToDecode: string):string{

@@ -4,8 +4,44 @@
  * @author MrH-rezroll
  */
 
+import BaseCipherModel from "../model/BaseCipherModel";
+import CaesarCipherModel from "../model/CaesarCipherModel";
 import BeginnerView from "../view/BeginnerView";
 
-export default function BeginnerControl(){
-    return <BeginnerView />;
+let theCipherModel:BaseCipherModel;
+const cipherPreviewInput = document.getElementById('EncodeDisplayPreview') as HTMLInputElement | null;
+
+export default class BeginnerControl{
+    theBeginnerView:BeginnerView;
+    constructor(){
+        this.theBeginnerView = new BeginnerView(this);
+        theCipherModel = new CaesarCipherModel("Let's encode some text with a Caesar Cipher!", 7);
+    }
+
+    getTheBeginnerViewMarkup(){
+        return this.theBeginnerView.getTheBeginnerView();
+    }
+
+    getTheCipherMessage ():string{
+        return theCipherModel.getTheMessage();
+    }
+
+    getTheCipherKey ():number{
+        return theCipherModel.getTheCipherKey();
+    }
+
+    getTheCipherDisplayPreview ():string {
+        return theCipherModel.getTheCipherDisplayPreview();
+    }
+    
+    changeKeyValue(event: { target: {name: any, value: any; }; }) {
+        if(event.target.name == "shiftby"){
+            theCipherModel.setTheCipherKey(Number(event.target.value));
+            console.log(theCipherModel.getTheCipherKey());
+            theCipherModel.setTheCipherDisplayPreview();
+            if(cipherPreviewInput != null){
+                cipherPreviewInput.value = theCipherModel.getTheCipherDisplayPreview();
+            }
+        }
+    }
 }

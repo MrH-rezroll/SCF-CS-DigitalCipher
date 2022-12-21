@@ -7,11 +7,19 @@
 export default abstract class BaseCipherModel{
     theMessage:string;
     theCipherKey:number;
+    public theCipherDisplayPreview:string = "";
     alphabet:string[];
     constructor(message:string, cipherKey:number){
         this.theMessage = message;
         this.theCipherKey = cipherKey;
         this.alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+    }
+    
+    setTheCipherDisplayPreview (){
+        this.theCipherDisplayPreview = "should override";
+    }
+    getTheCipherDisplayPreview ():string {
+        return this.theCipherDisplayPreview;
     }
 
     getTheMessage ():string{

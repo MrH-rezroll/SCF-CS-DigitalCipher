@@ -12,13 +12,14 @@ import NoMatchView from "./view/NoMatchView";
 import BeginnerControl from "./control/BeginnerControl";
 
 export default function App() {
+  const theBeginnerControl = new BeginnerControl();
 
   return (
     <div id="AppWrapper">
       <Routes>
         <Route path="/" element={<LayoutView />}>
           <Route index element={<AppLandingView />} />
-          <Route path="beginner" element={<BeginnerControl />} />
+          <Route path="beginner" element={theBeginnerControl.getTheBeginnerViewMarkup()} />
           <Route path="advanced" element={<AdvancedView />} />
           <Route path="*" element={<NoMatchView />} />
         </Route>
