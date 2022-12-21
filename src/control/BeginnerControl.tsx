@@ -9,7 +9,7 @@ import CaesarCipherModel from "../model/CaesarCipherModel";
 import BeginnerView from "../view/BeginnerView";
 
 let theCipherModel:BaseCipherModel;
-const cipherPreviewInput = document.getElementById('EncodeDisplayPreview') as HTMLInputElement | null;
+let cipherPreviewInput = document.getElementById('EncodeDisplayPreview') as HTMLInputElement | null;
 
 export default class BeginnerControl{
     theBeginnerView:BeginnerView;
@@ -41,6 +41,12 @@ export default class BeginnerControl{
             theCipherModel.setTheCipherDisplayPreview();
             if(cipherPreviewInput != null){
                 cipherPreviewInput.value = theCipherModel.getTheCipherDisplayPreview();
+            }
+            else {
+                cipherPreviewInput = document.getElementById('EncodeDisplayPreview') as HTMLInputElement | null;
+                if(cipherPreviewInput != null){
+                    cipherPreviewInput.value = theCipherModel.getTheCipherDisplayPreview();
+                }
             }
         }
     }
