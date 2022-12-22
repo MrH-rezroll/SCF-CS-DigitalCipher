@@ -8,6 +8,7 @@ import BaseCipherModel from "./BaseCipherModel";
 
 const alphabet:String[] = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 let theTextToCode:string;
+
 export default class CaesarCipherModel extends BaseCipherModel{
     constructor(message:string, cipherKey:number){
         super(message, cipherKey);

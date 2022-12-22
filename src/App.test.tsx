@@ -3,10 +3,23 @@ import { render, screen } from '@testing-library/react';
 import App from './App';
 import CaesarCipherModel from './model/CaesarCipherModel';
 
-// Model Tests
+// Caesar Cipher Model Tests
 test('Caesar Cipher get message is "hello"', () => {
   const theCaesarCipher = new CaesarCipherModel("hello", 7);
   expect(theCaesarCipher.getTheMessage()).toBe("hello");
+});
+
+test('Caesar Cipher can encode whole alphabet, numbers, and special characters', () => {
+  const theCaesarCipher = new CaesarCipherModel("abcdefghijklmnopqrstuvwxyz012345678.,?!'", 7);
+  theCaesarCipher.setTheEncodedMessage(theCaesarCipher.getTheMessage());
+  expect(theCaesarCipher.getTheMessage()).toBe("hijklmnopqrstuvwxyzabcdefg012345678.,?!'");
+});
+
+test('Caesar Cipher can decode whole alphabet, numbers, and special characters', () => {
+  const theCaesarCipher = new CaesarCipherModel("abcdefghijklmnopqrstuvwxyz012345678.,?!'", 7);
+  theCaesarCipher.setTheEncodedMessage(theCaesarCipher.getTheMessage());
+  theCaesarCipher.setTheDecodedMessage(theCaesarCipher.getTheMessage());
+  expect(theCaesarCipher.getTheMessage()).toBe("abcdefghijklmnopqrstuvwxyz012345678.,?!'");
 });
 
 test('Caesar Cipher get key is 7', () => {
