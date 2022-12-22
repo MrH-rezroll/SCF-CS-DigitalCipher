@@ -5,9 +5,17 @@
  */
 
 import { Link } from "react-router-dom";
+import AdvancedControl from "../control/AdvancedControl";
 import ModalWindowControl from "../control/ModalWindowControl";
 
-export default function AdvancedView() {
+export default class AdvancedView {
+  theAdvancedControl:AdvancedControl;
+
+  constructor(advancedControl:AdvancedControl){
+    this.theAdvancedControl = advancedControl;
+  }
+
+  getTheView(){
   return (
     <div id="Advanced">
       <div id="EncryptionSelection">
@@ -47,6 +55,7 @@ export default function AdvancedView() {
       </div>
     </div>
   );
+  }
 }
 
 

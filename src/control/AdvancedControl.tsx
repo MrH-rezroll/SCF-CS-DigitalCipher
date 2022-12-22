@@ -6,6 +6,15 @@
 
 import AdvancedView from "../view/AdvancedView";
 
-export default function AdvancedControl(){
-    return <AdvancedView />;
+export default class AdvancedControl {
+    theAdvancedView:AdvancedView;
+
+    constructor(){
+        this.theAdvancedView = new AdvancedView(this);
+    }
+    
+
+    getTheViewMarkup(){
+        return this.theAdvancedView.getTheView();
+    }
 }

@@ -10,17 +10,19 @@ import AdvancedView from "./view/AdvancedView";
 import AppLandingView from "./view/AppLandingView";
 import NoMatchView from "./view/NoMatchView";
 import BeginnerControl from "./control/BeginnerControl";
+import AdvancedControl from "./control/AdvancedControl";
 
 export default function App() {
   const theBeginnerControl = new BeginnerControl();
+  const theAdvancedControl = new AdvancedControl();
 
   return (
     <div id="AppWrapper">
       <Routes>
         <Route path="/" element={<LayoutView />}>
           <Route index element={<AppLandingView />} />
-          <Route path="beginner" element={theBeginnerControl.getTheBeginnerViewMarkup()} />
-          <Route path="advanced" element={<AdvancedView />} />
+          <Route path="beginner" element={theBeginnerControl.getTheViewMarkup()} />
+          <Route path="advanced" element={theAdvancedControl.getTheViewMarkup()} />
           <Route path="*" element={<NoMatchView />} />
         </Route>
       </Routes>

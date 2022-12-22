@@ -19,8 +19,8 @@ export default class BeginnerControl{
         theCipherModel = new CaesarCipherModel("Let's encode some text with a Caesar Cipher!", 7);
     }
 
-    getTheBeginnerViewMarkup(){
-        return this.theBeginnerView.getTheBeginnerView();
+    getTheViewMarkup(){
+        return this.theBeginnerView.getTheView();
     }
 
     getTheCipherMessage ():string{

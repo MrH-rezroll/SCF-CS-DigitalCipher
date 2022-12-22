@@ -14,7 +14,7 @@ export default class BeginnerView {
     this.theBeginnerControl = beginnerControl;
   }
 
-  getTheBeginnerView(){
+  getTheView(){
     return (
       <div id="Beginner">
       <div id="EncryptionSelection">
