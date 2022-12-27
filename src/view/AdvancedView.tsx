@@ -32,9 +32,9 @@ export default class AdvancedView {
         <form>
           <legend>Encryption Options:</legend>
           <label htmlFor="shiftby">Shift by:</label>
-          <input type="number" id="shiftby" name="shiftby" min="1" max="24" defaultValue={7} onChange={changeShiftValue}></input>
+          <input type="number" id="shiftby" name="shiftby" min="1" max="24" defaultValue={7} onChange={this.theAdvancedControl.changeKeyValue}></input>
           <label>Result:</label>
-          <input type="text" readOnly={true} value="a -> h"></input>
+          <input type="text" id="EncodeDisplayPreview" name="encodedDisplayPreview" readOnly={false} onChange={this.theAdvancedControl.changeKeyValue} defaultValue={this.theAdvancedControl.getTheCipherDisplayPreview()}></input>
           <legend>Encoded Sharing:</legend>
           <ModalWindowControl buttonText={"About Encoded Sharing"} modalMessage={"For further security, you can encode your shift key with a more complex algorithm called base64. This way you are not sharing the actual shift value. Use copy to create the encoded key for your message, and use paste to set a key from an encoded message."} modalType={0} modalCustomClassName={"help-button"} />
           <div>
@@ -45,11 +45,11 @@ export default class AdvancedView {
         <form>
           <div>
             <legend>Encryption Text:</legend>
-            <textarea name="textToEncode"></textarea>
+            <textarea id="CipherText" name="textToEncode" defaultValue={this.theAdvancedControl.getTheCipherMessage()}></textarea>
           </div>
           <div>
-            <button>Encode Text</button>
-            <button>Decode Text</button>
+            <button onClick={this.theAdvancedControl.encodeTheCipherText}>Encode Text</button>
+            <button onClick={this.theAdvancedControl.decodeTheCipherText}>Decode Text</button>
           </div>
         </form>
       </div>
@@ -57,9 +57,3 @@ export default class AdvancedView {
   );
   }
 }
-
-
-
-function changeShiftValue(event: { target: { value: any; }; }) {
-    console.log(event.target.value);
-  }

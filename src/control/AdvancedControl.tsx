@@ -5,11 +5,13 @@
  */
 
 import AdvancedView from "../view/AdvancedView";
+import BeginnerControl from "./BeginnerControl";
 
-export default class AdvancedControl {
+export default class AdvancedControl extends BeginnerControl{
     theAdvancedView:AdvancedView;
 
     constructor(){
+        super();
         this.theAdvancedView = new AdvancedView(this);
     }
     
