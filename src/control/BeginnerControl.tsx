@@ -19,6 +19,10 @@ export default class BeginnerControl{
         theCipherModel = new CaesarCipherModel("Let's encode some text with a Caesar Cipher!", 7);
     }
 
+    public gettheCipherModel():BaseCipherModel{
+        return theCipherModel;
+    }
+
     getTheViewMarkup(){
         return this.theBeginnerView.getTheView();
     }
@@ -82,6 +86,8 @@ export default class BeginnerControl{
                     cipherPreviewInput.value = theCipherModel.getTheCipherDisplayPreview();
                 }
             }
+            let theShiftInput = document.getElementById("shiftby") as HTMLInputElement;
+            theShiftInput.setAttribute('data-b64value', theCipherModel.getBase64EncodedKey());
         }
     }
 }

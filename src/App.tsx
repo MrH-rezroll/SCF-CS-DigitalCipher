@@ -6,26 +6,28 @@
 
 import { Routes, Route} from "react-router-dom";
 import LayoutView from "./view/LayoutView"; 
-import AdvancedView from "./view/AdvancedView";
 import AppLandingView from "./view/AppLandingView";
 import NoMatchView from "./view/NoMatchView";
 import BeginnerControl from "./control/BeginnerControl";
 import AdvancedControl from "./control/AdvancedControl";
 
-export default function App() {
-  const theBeginnerControl = new BeginnerControl();
-  const theAdvancedControl = new AdvancedControl();
+export default class App {
 
-  return (
-    <div id="AppWrapper">
-      <Routes>
-        <Route path="/" element={<LayoutView />}>
-          <Route index element={<AppLandingView />} />
-          <Route path="beginner" element={theBeginnerControl.getTheViewMarkup()} />
-          <Route path="advanced" element={theAdvancedControl.getTheViewMarkup()} />
-          <Route path="*" element={<NoMatchView />} />
-        </Route>
-      </Routes>
-    </div>
-  );
+  public theBeginnerControl:BeginnerControl = new BeginnerControl();
+  public theAdvancedControl:AdvancedControl = new AdvancedControl();
+  
+  GetAppMarkup (){
+    return (
+      <div id="AppWrapper">
+        <Routes>
+          <Route path="/" element={<LayoutView />}>
+            <Route index element={<AppLandingView />} />
+            <Route path="beginner" element={this.theBeginnerControl.getTheViewMarkup()} />
+            <Route path="advanced" element={this.theAdvancedControl.getTheViewMarkup()} />
+            <Route path="*" element={<NoMatchView />} />
+          </Route>
+        </Routes>
+      </div>
+    );
+  }
 }

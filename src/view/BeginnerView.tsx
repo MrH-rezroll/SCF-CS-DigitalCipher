@@ -30,7 +30,7 @@ export default class BeginnerView {
         <form>
           <legend>Encryption Options:</legend>
           <label htmlFor="shiftby">Shift by:</label>
-          <input type="number" id="shiftby" name="shiftby" min="1" max="24" defaultValue={this.theBeginnerControl.getTheCipherKey()} onChange={this.theBeginnerControl.changeKeyValue}></input>
+          <input data-b64value="Nw==" type="number" id="shiftby" name="shiftby" min="1" max="24" defaultValue={this.theBeginnerControl.getTheCipherKey()} onChange={this.theBeginnerControl.changeKeyValue}></input>
           <label>Result:</label>
           <input type="text" id="EncodeDisplayPreview" name="encodedDisplayPreview" readOnly={false} onChange={this.theBeginnerControl.changeKeyValue} defaultValue={this.theBeginnerControl.getTheCipherDisplayPreview()}></input>
         </form>

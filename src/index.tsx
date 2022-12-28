@@ -14,10 +14,16 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+declare global{
+  var theApp:App;
+}
+globalThis.theApp = new App();
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      {theApp.GetAppMarkup()}
     </BrowserRouter>
   </React.StrictMode>
 );

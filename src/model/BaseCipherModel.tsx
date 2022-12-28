@@ -4,6 +4,8 @@
  * @author MrH-rezroll
  */
 
+import { Buffer } from "buffer";
+
 export default abstract class BaseCipherModel{
     theMessage:string;
     theCipherKey:number;
@@ -47,7 +49,7 @@ export default abstract class BaseCipherModel{
         return Buffer.from(String(this.getTheCipherKey())).toString('base64');
     }
 
-    setBase64EncodedKey (encodedKey:string) {
+    public setBase64EncodedKey (encodedKey:string) {
         this.setTheCipherKey(Number(Buffer.from(encodedKey, 'base64').toString('ascii')));
     }
 

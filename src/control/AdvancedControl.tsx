@@ -14,9 +14,12 @@ export default class AdvancedControl extends BeginnerControl{
         super();
         this.theAdvancedView = new AdvancedView(this);
     }
-    
 
     getTheViewMarkup(){
         return this.theAdvancedView.getTheView();
+    }
+
+    changeKeyValue(event: { target: { name: any; value: any; }; }): void {
+        super.changeKeyValue(event);
     }
 }
