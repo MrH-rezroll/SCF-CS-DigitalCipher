@@ -96,6 +96,10 @@ button:hover{
 
 /* Class Styles */
 
+.fit-content-width{
+  width:fit-content;
+}
+
 .ReactModal__Content{
   width: 400px;
   margin: 0 auto;

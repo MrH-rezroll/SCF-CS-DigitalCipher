@@ -70,6 +70,16 @@ export default class BeginnerControl{
         }
         
     }
+
+    resetMessageIsEncoded(){
+        messageIsCurrentlyEncoded = true;
+    }
+
+    async copyMessageToClipboard(){
+        let messageBox = document.getElementById("CipherText") as HTMLInputElement;
+        await navigator.clipboard.writeText(messageBox.value);
+        messageIsCurrentlyEncoded = false;
+    }
     
     changeKeyValue(event: { target: {name: any, value: any; }; }) {
         if(event.target.name == "shiftby"){

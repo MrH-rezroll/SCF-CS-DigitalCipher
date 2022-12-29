@@ -37,7 +37,8 @@ export default class BeginnerView {
         <form>
           <div>
             <legend>Encryption Text:</legend>
-            <textarea id="CipherText" name="textToEncode" defaultValue={this.theBeginnerControl.getTheCipherMessage()}></textarea>
+            <textarea onChange={this.theBeginnerControl.resetMessageIsEncoded} id="CipherText" name="textToEncode" defaultValue={this.theBeginnerControl.getTheCipherMessage()}></textarea>
+            <button onClick={this.theBeginnerControl.copyMessageToClipboard} className="fit-content-width">Copy Message to Clipboard</button>
           </div>
           <div>
             <button onClick={this.theBeginnerControl.encodeTheCipherText}>Encode Text</button>
