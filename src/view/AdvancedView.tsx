@@ -45,7 +45,11 @@ export default class AdvancedView {
         <form>
           <div>
             <legend>Encryption Text:</legend>
-            <textarea id="CipherText" name="textToEncode" defaultValue={this.theAdvancedControl.getTheCipherMessage()}></textarea>
+            <textarea onChange={this.theAdvancedControl.resetMessageIsEncoded} id="CipherText" name="textToEncode" defaultValue={this.theAdvancedControl.getTheCipherMessage()}></textarea>
+            <div className="message-buttons">
+              <button onClick={this.theAdvancedControl.copyMessageToClipboard} className="fit-content-width">Copy Message to Clipboard</button>
+              <button onClick={this.theAdvancedControl.pasteMessageFromClipboard} className="fit-content-width">Paste Message from Clipboard</button>
+            </div>
           </div>
           <div>
             <button onClick={this.theAdvancedControl.encodeTheCipherText}>Encode Text</button>

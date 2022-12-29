@@ -72,13 +72,20 @@ export default class BeginnerControl{
     }
 
     resetMessageIsEncoded(){
-        messageIsCurrentlyEncoded = true;
+        messageIsCurrentlyEncoded = false;
     }
 
-    async copyMessageToClipboard(){
+    async copyMessageToClipboard(event: any){
+        event.preventDefault();
         let messageBox = document.getElementById("CipherText") as HTMLInputElement;
         await navigator.clipboard.writeText(messageBox.value);
-        messageIsCurrentlyEncoded = false;
+    }
+
+    async pasteMessageFromClipboard(event: any){
+        event.preventDefault();
+        let messageBox = document.getElementById("CipherText") as HTMLInputElement;
+        messageBox.value = await navigator.clipboard.readText();
+        messageIsCurrentlyEncoded = true;
     }
     
     changeKeyValue(event: { target: {name: any, value: any; }; }) {

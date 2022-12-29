@@ -98,6 +98,12 @@ button:hover{
 
 .fit-content-width{
   width:fit-content;
+  margin-right: 2%;
+}
+
+.message-buttons{
+  display:flex;
+  flex-flow:row;
 }
 
 .ReactModal__Content{

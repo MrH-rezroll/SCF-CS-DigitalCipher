@@ -38,8 +38,11 @@ export default class BeginnerView {
           <div>
             <legend>Encryption Text:</legend>
             <textarea onChange={this.theBeginnerControl.resetMessageIsEncoded} id="CipherText" name="textToEncode" defaultValue={this.theBeginnerControl.getTheCipherMessage()}></textarea>
-            <button onClick={this.theBeginnerControl.copyMessageToClipboard} className="fit-content-width">Copy Message to Clipboard</button>
-          </div>
+            <div className="message-buttons">
+              <button onClick={this.theBeginnerControl.copyMessageToClipboard} className="fit-content-width">Copy Message to Clipboard</button>
+              <button onClick={this.theBeginnerControl.pasteMessageFromClipboard} className="fit-content-width">Paste Message from Clipboard</button>
+            </div>
+            </div>
           <div>
             <button onClick={this.theBeginnerControl.encodeTheCipherText}>Encode Text</button>
             <button onClick={this.theBeginnerControl.decodeTheCipherText}>Decode Text</button>
