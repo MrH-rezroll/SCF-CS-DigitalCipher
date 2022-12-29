@@ -11,12 +11,12 @@ import BeginnerView from "../view/BeginnerView";
 let theCipherModel:BaseCipherModel;
 let cipherPreviewInput = document.getElementById('EncodeDisplayPreview') as HTMLInputElement | null;
 let cipherText = document.getElementById('CipherText') as HTMLInputElement | null;
-
+let messageIsCurrentlyEncoded: Boolean = true;
 export default class BeginnerControl{
     theBeginnerView:BeginnerView;
     constructor(){
         this.theBeginnerView = new BeginnerView(this);
-        theCipherModel = new CaesarCipherModel("Let's encode some text with a Caesar Cipher!", 7);
+        theCipherModel = new CaesarCipherModel("Sla'z lujvkl zvtl alea dpao h Jhlzhy Jpwoly!", 7);
     }
 
     public gettheCipherModel():BaseCipherModel{
@@ -41,7 +41,7 @@ export default class BeginnerControl{
 
     encodeTheCipherText(event: any){
         event.preventDefault();
-        if(theCipherModel.isTheMessageEncoded()){
+        if(messageIsCurrentlyEncoded){
             return;
         }
         if(cipherText == null){
@@ -51,23 +51,22 @@ export default class BeginnerControl{
             console.log(cipherText.value);
             theCipherModel.setTheEncodedMessage(cipherText.value);
             cipherText.value = theCipherModel.getTheMessage();
-            theCipherModel.setTheMessageIsEncoded(true);
+            messageIsCurrentlyEncoded = true;
         }
         
     }
 
     decodeTheCipherText(event: any){
         event.preventDefault();
-        if(!theCipherModel.isTheMessageEncoded()){
+        if(!messageIsCurrentlyEncoded){
             return;
         }
         if(cipherText == null){
             cipherText = document.getElementById('CipherText') as HTMLInputElement | null;
         }
         if(cipherText != null){
-            theCipherModel.setTheDecodedMessage(cipherText.value);
-            cipherText.value = theCipherModel.getTheMessage();
-            theCipherModel.setTheMessageIsEncoded(false);
+            cipherText.value = theCipherModel.getTheDecodedMessage(cipherText.value);
+            messageIsCurrentlyEncoded = false;
         }
         
     }
@@ -75,7 +74,6 @@ export default class BeginnerControl{
     changeKeyValue(event: { target: {name: any, value: any; }; }) {
         if(event.target.name == "shiftby"){
             theCipherModel.setTheCipherKey(Number(event.target.value));
-            console.log(theCipherModel.getTheCipherKey());
             theCipherModel.setTheCipherDisplayPreview();
             if(cipherPreviewInput != null){
                 cipherPreviewInput.value = theCipherModel.getTheCipherDisplayPreview();

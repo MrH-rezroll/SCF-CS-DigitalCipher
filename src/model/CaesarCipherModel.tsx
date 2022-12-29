@@ -23,8 +23,8 @@ export default class CaesarCipherModel extends BaseCipherModel{
         return this.encodeTheMessage();
     }
     
-    async setTheDecodedMessage (message:string) {
-        await this.setTheMessage(this.decodeTheMessage(message));
+    getTheDecodedMessage (message:string): string {
+        return this.decodeTheMessage(message);
     }
 
     setTheCipherDisplayPreview () {

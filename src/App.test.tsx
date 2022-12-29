@@ -18,8 +18,7 @@ test('Caesar Cipher can encode whole alphabet, numbers, and special characters',
 test('Caesar Cipher can decode whole alphabet, numbers, and special characters', () => {
   const theCaesarCipher = new CaesarCipherModel("abcdefghijklmnopqrstuvwxyz012345678.,?!'", 7);
   theCaesarCipher.setTheEncodedMessage(theCaesarCipher.getTheMessage());
-  theCaesarCipher.setTheDecodedMessage(theCaesarCipher.getTheMessage());
-  expect(theCaesarCipher.getTheMessage()).toBe("abcdefghijklmnopqrstuvwxyz012345678.,?!'");
+  expect(theCaesarCipher.getTheDecodedMessage(theCaesarCipher.getTheMessage())).toBe("abcdefghijklmnopqrstuvwxyz012345678.,?!'");
 });
 
 test('Caesar Cipher get key is 7', () => {
@@ -83,6 +82,5 @@ test('Caesar Cipher full user process test: Encode a messge, recieve and decode 
   expect(theCaesarCipher.getTheEncodedMessage()).toBe("Olssv Dvysk!");
   theCaesarCipher.setBase64EncodedKey("OA==");
   expect(theCaesarCipher.getTheCipherKey()).toBe(8);
-  theCaesarCipher.setTheDecodedMessage("Pmttw Camz 42.");
-  expect(theCaesarCipher.getTheMessage()).toBe("Hello User 42.");
+  expect(theCaesarCipher.getTheDecodedMessage("Pmttw Camz 42.")).toBe("Hello User 42.");
 });

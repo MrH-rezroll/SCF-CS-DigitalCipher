@@ -10,18 +10,9 @@ export default abstract class BaseCipherModel{
     theMessage:string;
     theCipherKey:number;
     public theCipherDisplayPreview:string = "";
-    messageIsEncoded:boolean;
     constructor(message:string, cipherKey:number){
         this.theMessage = message;
         this.theCipherKey = cipherKey;
-        this.messageIsEncoded = false;
-    }
-
-    isTheMessageEncoded():boolean{
-        return this.messageIsEncoded;
-    }
-    setTheMessageIsEncoded(isEncoded:boolean){
-        this.messageIsEncoded = isEncoded;
     }
     
     setTheCipherDisplayPreview (){
@@ -57,7 +48,7 @@ export default abstract class BaseCipherModel{
         this.setTheMessage(message);
     }
 
-    setTheDecodedMessage(message:string){
-        this.setTheMessage(message);
+    getTheDecodedMessage(message:string):string{
+        return "override me";
     }
 }
