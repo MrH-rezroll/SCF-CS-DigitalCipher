@@ -15,7 +15,7 @@ export default class AdvancedView {
     this.theAdvancedControl = advancedControl;
   }
 
-  getTheView(){
+  getTheViewMarkup(){
   return (
     <div id="Advanced">
       <div id="EncryptionSelection">

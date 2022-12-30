@@ -19,26 +19,51 @@ export default class BeginnerControl{
         theCipherModel = new CaesarCipherModel("Sla'z lujvkl zvtl alea dpao h Jhlzhy Jpwoly!", 7);
     }
 
-    public gettheCipherModel():BaseCipherModel{
+    /**
+     * Get the current Cipher Model
+     * @returns the instance of this Concrete CipherModel
+     */
+    gettheCipherModel():BaseCipherModel{
         return theCipherModel;
     }
 
+    /**
+     * Get the code markup for the view using this control
+     * @returns The display markup used by this control
+     */
     getTheViewMarkup(){
         return this.theBeginnerView.getTheView();
     }
 
+    /**
+     * Get the current encoded message
+     * @returns the message currently held in the Cipher Mocel
+     */
     getTheCipherMessage ():string{
-        return theCipherModel.getTheMessage();
+        return this.getTheCipherMessage();
     }
 
+    /**
+     * Get the current cipher key
+     * @returns The key to be used by the current Cipher Model instance
+     */
     getTheCipherKey ():number{
-        return theCipherModel.getTheCipherKey();
+        return this.getTheCipherKey();
     }
 
+    /**
+     * A preview of how the current cipher is manipulating the message
+     * @returns the preview text displaying how the current key & Cipher are encoding the message
+     */
     getTheCipherDisplayPreview ():string {
-        return theCipherModel.getTheCipherDisplayPreview();
+        return this.getTheCipherDisplayPreview();
     }
 
+    /**
+     * Encodes the message with this Cipher type
+     * @param event the event that invoked this encode method
+     * @returns The message encoded with this Cipher and Key
+     */
     encodeTheCipherText(event: any){
         event.preventDefault();
         if(messageIsCurrentlyEncoded){
@@ -56,6 +81,11 @@ export default class BeginnerControl{
         
     }
 
+    /**
+     * Encodes the message with the Ceasar Cipher type
+     * @param event the event that invoked this decode method
+     * @returns The message encoded with the Caesar Cipher and Key
+     */
     decodeTheCipherText(event: any){
         event.preventDefault();
         if(!messageIsCurrentlyEncoded){
@@ -71,16 +101,27 @@ export default class BeginnerControl{
         
     }
 
+    /**
+     * Used to help track if the message in the view is currently encoded
+     */
     resetMessageIsEncoded(){
         messageIsCurrentlyEncoded = false;
     }
 
+    /**
+     * Copies the message as it is displayed in the view to the OS clipboard
+     * @param event the event that invoked this method
+     */
     async copyMessageToClipboard(event: any){
         event.preventDefault();
         let messageBox = document.getElementById("CipherText") as HTMLInputElement;
         await navigator.clipboard.writeText(messageBox.value);
     }
 
+    /**
+     * Pastes a message held on the OS clipboard to the view's textarea.
+     * @param event the event that invoked this method
+     */
     async pasteMessageFromClipboard(event: any){
         event.preventDefault();
         let messageBox = document.getElementById("CipherText") as HTMLInputElement;
@@ -88,6 +129,10 @@ export default class BeginnerControl{
         messageIsCurrentlyEncoded = true;
     }
     
+    /**
+     * Updates the CipherModel key and generates a new display preview for the new key
+     * @param event the event that invoked this method
+     */
     changeKeyValue(event: { target: {name: any, value: any; }; }) {
         if(event.target.name == "shiftby"){
             theCipherModel.setTheCipherKey(Number(event.target.value));

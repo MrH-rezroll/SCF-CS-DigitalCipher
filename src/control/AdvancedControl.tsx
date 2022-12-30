@@ -15,10 +15,19 @@ export default class AdvancedControl extends BeginnerControl{
         this.theAdvancedView = new AdvancedView(this);
     }
 
+    /**
+     * Get the code markup for the view using this control
+     * @returns The display markup used by this control
+     */
     getTheViewMarkup(){
-        return this.theAdvancedView.getTheView();
+        return this.theAdvancedView.getTheViewMarkup();
     }
 
+    
+    /**
+     * Updates the CipherModel key and generates a new display preview for the new key by calling its super class
+     * @param event the event that invoked this method
+     */
     changeKeyValue(event: { target: { name: any; value: any; }; }): void {
         super.changeKeyValue(event);
     }

@@ -1,3 +1,15 @@
+# Digital Cipher Activity
+
+This project is a digital cipher that is being created for use alongside curriculumn for a
+middle-school aged Cyber Security STEM camp.
+
+In addition to providing this, the code itself is being written so that it can be of use to adult
+level coding courses as an example, and something that could be built upon.
+
+The code for this project aims to replecate MVC (model, view, control) in as much as it makes sense for a web app, using Typescript and React. Unit tests are done for methods in the Model classes.
+
+-- Below are the original instructions for starting a Typescript/React project. They should be usefull for anyone looking to set this project up on their own sytstem. --
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
