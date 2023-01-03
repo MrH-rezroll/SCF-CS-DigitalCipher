@@ -27,7 +27,7 @@ export default function App ({cipherModel}:Props){
             <Route index element={<AppLandingView />} />
             <Route path="beginner" element={<BeginnerControl cipherModel={cipherModel} />} />
             <Route path="advanced" element={<AdvancedControl cipherModel={cipherModel} />} />
-            <Route path="*" element={<NoMatchView />} />
+            <Route path="*" element={<AppLandingView />} />
           </Route>
         </Routes>
       </div>
