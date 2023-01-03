@@ -4,19 +4,30 @@
  * @author MrH-rezroll
  */
 
+import React from "react";
+import { Props } from "../App";
 import BaseCipherModel from "../model/BaseCipherModel";
 import CaesarCipherModel from "../model/CaesarCipherModel";
 import BeginnerView from "../view/BeginnerView";
 
-let theCipherModel:BaseCipherModel;
 let cipherPreviewInput = document.getElementById('EncodeDisplayPreview') as HTMLInputElement | null;
 let cipherText = document.getElementById('CipherText') as HTMLInputElement | null;
-let messageIsCurrentlyEncoded: Boolean = true;
-export default class BeginnerControl{
-    theBeginnerView:BeginnerView;
-    constructor(){
-        this.theBeginnerView = new BeginnerView(this);
-        theCipherModel = new CaesarCipherModel("Sla'z lujvkl zvtl alea dpao h Jhlzhy Jpwoly!", 7);
+
+export default class BeginnerControl extends React.Component<Props>{
+    theCipherModel:BaseCipherModel;
+    constructor(props:Props){
+        super(props);
+        this.theCipherModel = props.cipherModel;
+        cipherPreviewInput = null;
+        cipherText = null; 
+        this.encodeTheCipherText = this.encodeTheCipherText.bind(this);
+        this.decodeTheCipherText = this.decodeTheCipherText.bind(this);
+        this.changeKeyValue = this.changeKeyValue.bind(this);
+    }
+
+    render(): React.ReactNode {
+        console.log(this.props.cipherModel)
+        return BeginnerView(this.props, this);
     }
 
     /**
@@ -24,15 +35,7 @@ export default class BeginnerControl{
      * @returns the instance of this Concrete CipherModel
      */
     gettheCipherModel():BaseCipherModel{
-        return theCipherModel;
-    }
-
-    /**
-     * Get the code markup for the view using this control
-     * @returns The display markup used by this control
-     */
-    getTheViewMarkup(){
-        return this.theBeginnerView.getTheView();
+        return this.theCipherModel;
     }
 
     /**
@@ -66,17 +69,14 @@ export default class BeginnerControl{
      */
     encodeTheCipherText(event: any){
         event.preventDefault();
-        if(messageIsCurrentlyEncoded){
-            return;
-        }
         if(cipherText == null){
             cipherText = document.getElementById('CipherText') as HTMLInputElement | null;
         }
         if(cipherText != null){
+            console.log(this.theCipherModel);
             console.log(cipherText.value);
-            theCipherModel.setTheEncodedMessage(cipherText.value);
-            cipherText.value = theCipherModel.getTheMessage();
-            messageIsCurrentlyEncoded = true;
+            this.theCipherModel.setTheEncodedMessage(cipherText.value);
+            cipherText.value = this.theCipherModel.getTheMessage();
         }
         
     }
@@ -88,24 +88,12 @@ export default class BeginnerControl{
      */
     decodeTheCipherText(event: any){
         event.preventDefault();
-        if(!messageIsCurrentlyEncoded){
-            return;
-        }
         if(cipherText == null){
             cipherText = document.getElementById('CipherText') as HTMLInputElement | null;
         }
         if(cipherText != null){
-            cipherText.value = theCipherModel.getTheDecodedMessage(cipherText.value);
-            messageIsCurrentlyEncoded = false;
+            cipherText.value = this.theCipherModel.getTheDecodedMessage(cipherText.value);
         }
-        
-    }
-
-    /**
-     * Used to help track if the message in the view is currently encoded
-     */
-    resetMessageIsEncoded(){
-        messageIsCurrentlyEncoded = false;
     }
 
     /**
@@ -126,7 +114,6 @@ export default class BeginnerControl{
         event.preventDefault();
         let messageBox = document.getElementById("CipherText") as HTMLInputElement;
         messageBox.value = await navigator.clipboard.readText();
-        messageIsCurrentlyEncoded = true;
     }
     
     /**
@@ -135,19 +122,19 @@ export default class BeginnerControl{
      */
     changeKeyValue(event: { target: {name: any, value: any; }; }) {
         if(event.target.name == "shiftby"){
-            theCipherModel.setTheCipherKey(Number(event.target.value));
-            theCipherModel.setTheCipherDisplayPreview();
+            this.theCipherModel.setTheCipherKey(Number(event.target.value));
+            this.theCipherModel.setTheCipherDisplayPreview();
             if(cipherPreviewInput != null){
-                cipherPreviewInput.value = theCipherModel.getTheCipherDisplayPreview();
+                cipherPreviewInput.value = this.theCipherModel.getTheCipherDisplayPreview();
             }
             else {
                 cipherPreviewInput = document.getElementById('EncodeDisplayPreview') as HTMLInputElement | null;
                 if(cipherPreviewInput != null){
-                    cipherPreviewInput.value = theCipherModel.getTheCipherDisplayPreview();
+                    cipherPreviewInput.value = this.theCipherModel.getTheCipherDisplayPreview();
                 }
             }
             let theShiftInput = document.getElementById("shiftby") as HTMLInputElement;
-            theShiftInput.setAttribute('data-b64value', theCipherModel.getBase64EncodedKey());
+            theShiftInput.setAttribute('data-b64value', this.theCipherModel.getBase64EncodedKey());
         }
     }
 }

@@ -10,20 +10,16 @@ import { BrowserRouter } from "react-router-dom";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import CaesarCipherModel from './model/CaesarCipherModel';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-declare global{
-  var theApp:App;
-}
-globalThis.theApp = new App();
-
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      {theApp.GetAppMarkup()}
+      <App cipherModel={new CaesarCipherModel("Sla'z lujvkl zvtl alea dpao h Jhlzhy Jpwoly!", 7)} />
     </BrowserRouter>
   </React.StrictMode>
 );

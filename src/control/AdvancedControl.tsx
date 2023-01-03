@@ -4,25 +4,19 @@
  * @author MrH-rezroll
  */
 
+import { Props } from "../App";
 import AdvancedView from "../view/AdvancedView";
 import BeginnerControl from "./BeginnerControl";
 
 export default class AdvancedControl extends BeginnerControl{
-    theAdvancedView:AdvancedView;
 
-    constructor(){
-        super();
-        this.theAdvancedView = new AdvancedView(this);
+    constructor(props:Props){
+        super(props);
     }
 
-    /**
-     * Get the code markup for the view using this control
-     * @returns The display markup used by this control
-     */
-    getTheViewMarkup(){
-        return this.theAdvancedView.getTheViewMarkup();
+    render(): React.ReactNode {
+        return AdvancedView(this.props, this);
     }
-
     
     /**
      * Updates the CipherModel key and generates a new display preview for the new key by calling its super class

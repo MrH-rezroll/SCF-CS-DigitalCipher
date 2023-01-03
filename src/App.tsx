@@ -10,24 +10,26 @@ import AppLandingView from "./view/AppLandingView";
 import NoMatchView from "./view/NoMatchView";
 import BeginnerControl from "./control/BeginnerControl";
 import AdvancedControl from "./control/AdvancedControl";
+import BaseCipherModel from "./model/BaseCipherModel";
+import CaesarCipherModel from "./model/CaesarCipherModel";
+import React from "react";
 
-export default class App {
+export interface Props {
+  cipherModel: BaseCipherModel
+}
 
-  public theBeginnerControl:BeginnerControl = new BeginnerControl();
-  public theAdvancedControl:AdvancedControl = new AdvancedControl();
+export default function App ({cipherModel}:Props){
   
-  GetAppMarkup (){
     return (
       <div id="AppWrapper">
         <Routes>
           <Route path="/" element={<LayoutView />}>
             <Route index element={<AppLandingView />} />
-            <Route path="beginner" element={this.theBeginnerControl.getTheViewMarkup()} />
-            <Route path="advanced" element={this.theAdvancedControl.getTheViewMarkup()} />
+            <Route path="beginner" element={<BeginnerControl cipherModel={cipherModel} />} />
+            <Route path="advanced" element={<AdvancedControl cipherModel={cipherModel} />} />
             <Route path="*" element={<NoMatchView />} />
           </Route>
         </Routes>
       </div>
     );
-  }
 }

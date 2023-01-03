@@ -4,19 +4,15 @@
  * @author MrH-rezroll
  */
 
+import React from "react";
 import { Link } from "react-router-dom";
+import { Props } from "../App";
 import AdvancedControl from "../control/AdvancedControl";
 import ModalWindowControl from "../control/ModalWindowControl";
 
-export default class AdvancedView {
-  theAdvancedControl:AdvancedControl;
+export default function (props:Props, advancedControl:AdvancedControl){
 
-  constructor(advancedControl:AdvancedControl){
-    this.theAdvancedControl = advancedControl;
-  }
-
-  getTheViewMarkup(){
-  return (
+return (
     <div id="Advanced">
       <div id="EncryptionSelection">
         <h2>Beginner</h2>
@@ -32,9 +28,9 @@ export default class AdvancedView {
         <form>
           <legend>Encryption Options:</legend>
           <label htmlFor="shiftby">Shift by:</label>
-          <input data-b64value="Nw==" type="number" id="shiftby" name="shiftby" min="1" max="24" defaultValue={7} onChange={this.theAdvancedControl.changeKeyValue}></input>
+          <input data-b64value="Nw==" type="number" id="shiftby" name="shiftby" min="1" max="24" defaultValue={7} onChange={advancedControl.changeKeyValue}></input>
           <label>Result:</label>
-          <input type="text" id="EncodeDisplayPreview" name="encodedDisplayPreview" readOnly={false} onChange={this.theAdvancedControl.changeKeyValue} defaultValue={this.theAdvancedControl.getTheCipherDisplayPreview()}></input>
+          <input type="text" id="EncodeDisplayPreview" name="encodedDisplayPreview" readOnly={false} onChange={advancedControl.changeKeyValue} defaultValue={props.cipherModel.theCipherDisplayPreview}></input>
           <legend>Encoded Sharing:</legend>
           <ModalWindowControl buttonText={"About Encoded Sharing"} modalMessage={"For further security, you can encode your shift key with a more complex algorithm called base64. This way you are not sharing the actual shift value. Use copy to create the encoded key for your message, and use paste to set a key from an encoded message."} modalType={0} modalCustomClassName={"help-button"}/>
           <div>
@@ -45,19 +41,18 @@ export default class AdvancedView {
         <form>
           <div>
             <legend>Encryption Text:</legend>
-            <textarea onChange={this.theAdvancedControl.resetMessageIsEncoded} id="CipherText" name="textToEncode" defaultValue={this.theAdvancedControl.getTheCipherMessage()}></textarea>
+            <textarea id="CipherText" name="textToEncode" defaultValue={props.cipherModel.theMessage}></textarea>
             <div className="message-buttons">
-              <button onClick={this.theAdvancedControl.copyMessageToClipboard} className="fit-content-width">Copy Message to Clipboard</button>
-              <button onClick={this.theAdvancedControl.pasteMessageFromClipboard} className="fit-content-width">Paste Message from Clipboard</button>
+              <button onClick={advancedControl.copyMessageToClipboard} className="fit-content-width">Copy Message to Clipboard</button>
+              <button onClick={advancedControl.pasteMessageFromClipboard} className="fit-content-width">Paste Message from Clipboard</button>
             </div>
           </div>
           <div>
-            <button onClick={this.theAdvancedControl.encodeTheCipherText}>Encode Text</button>
-            <button onClick={this.theAdvancedControl.decodeTheCipherText}>Decode Text</button>
+            <button onClick={advancedControl.encodeTheCipherText}>Encode Text</button>
+            <button onClick={advancedControl.decodeTheCipherText}>Decode Text</button>
           </div>
         </form>
       </div>
     </div>
   );
-  }
 }

@@ -107,8 +107,9 @@ button:hover{
 }
 
 .ReactModal__Content{
-  width: 400px;
+  width: 340px;
   margin: 0 auto;
+  max-height: fit-content;
 }
 
 .help-button{    
@@ -152,6 +153,7 @@ button:hover{
   margin: 2% auto;
   border: 1px solid #3f3f3f;
   border-radius: 10px;
+  min-width:395px;
 }
 
 #MainSelection{
@@ -193,6 +195,7 @@ button:hover{
   width: 25%;
   margin-right: 0;
   display: inline;
+  min-width:155px;
 }
 #EncryptionOperations form:nth-child(1) {
   width: 25%;

@@ -7,8 +7,8 @@
 import { Buffer } from "buffer";
 
 export default abstract class BaseCipherModel{
-    theMessage:string;
-    theCipherKey:number;
+    public theMessage:string;
+    public theCipherKey:number;
     public theCipherDisplayPreview:string = "";
     constructor(message:string, cipherKey:number){
         this.theMessage = message;
