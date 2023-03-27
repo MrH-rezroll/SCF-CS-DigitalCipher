@@ -23,6 +23,7 @@
   "include": [
     "src",
     "src/view",
-    "src/control"
+    "src/control",
+    "src/fonts"
   ]
 }

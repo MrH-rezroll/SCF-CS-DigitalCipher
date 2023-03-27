@@ -1,15 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.990cbbc7.css",
-    "main.js": "/static/js/main.864d62bf.js",
-    "static/js/787.71d63073.chunk.js": "/static/js/787.71d63073.chunk.js",
-    "index.html": "/index.html",
-    "main.990cbbc7.css.map": "/static/css/main.990cbbc7.css.map",
-    "main.864d62bf.js.map": "/static/js/main.864d62bf.js.map",
-    "787.71d63073.chunk.js.map": "/static/js/787.71d63073.chunk.js.map"
+    "main.css": "/SCF-CS-CTF-Activity/static/css/main.e7442087.css",
+    "main.js": "/SCF-CS-CTF-Activity/static/js/main.80e54a01.js",
+    "static/js/787.71d63073.chunk.js": "/SCF-CS-CTF-Activity/static/js/787.71d63073.chunk.js",
+    "static/media/TechUIOne.jpeg": "/SCF-CS-CTF-Activity/static/media/TechUIOne.21677b825ed96942be6c.jpeg",
+    "static/media/SimpleTechBold02.ttf": "/SCF-CS-CTF-Activity/static/media/SimpleTechBold02.f981da469fb4f12289ce.ttf",
+    "static/media/FutureTech.ttf": "/SCF-CS-CTF-Activity/static/media/FutureTech.52f8abf476043618cef2.ttf",
+    "static/media/auto-techno.ttf": "/SCF-CS-CTF-Activity/static/media/auto-techno.8c9f70e4eaf2cca6207c.ttf",
+    "index.html": "/SCF-CS-CTF-Activity/index.html",
+    "main.e7442087.css.map": "/SCF-CS-CTF-Activity/static/css/main.e7442087.css.map",
+    "main.80e54a01.js.map": "/SCF-CS-CTF-Activity/static/js/main.80e54a01.js.map",
+    "787.71d63073.chunk.js.map": "/SCF-CS-CTF-Activity/static/js/787.71d63073.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.990cbbc7.css",
-    "static/js/main.864d62bf.js"
+    "static/css/main.e7442087.css",
+    "static/js/main.80e54a01.js"
   ]
 }
